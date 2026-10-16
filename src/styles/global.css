@@ -1,0 +1,283 @@
+@import '@picocss/pico/css/pico.jade.min.css';
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Outfit:wght@400;600;700&display=swap');
+
+:root {
+  --font-family: 'Cairo', system-ui, -apple-system, sans-serif;
+  --pico-font-family: 'Cairo', system-ui, -apple-system, sans-serif;
+  --medical-teal: #0d9488;
+  --medical-dark: #0f172a;
+  --badge-fasting: #f59e0b;
+  --badge-no-fasting: #10b981;
+  --badge-high: #ef4444;
+  --badge-low: #3b82f6;
+  --card-radius: 14px;
+}
+
+body {
+  font-family: var(--font-family);
+  direction: rtl;
+  text-align: right;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--pico-background-color);
+  color: var(--pico-color);
+}
+
+.latin-term {
+  font-family: 'Outfit', sans-serif;
+  direction: ltr;
+  display: inline-block;
+}
+
+/* Header & Banner */
+.sadaqah-ribbon {
+  background: linear-gradient(135deg, #0d9488, #059669);
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  text-align: center;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(13, 148, 136, 0.2);
+}
+
+.site-header {
+  padding: 2.5rem 1rem 1.5rem;
+  text-align: center;
+  background: radial-gradient(circle at 50% 20%, rgba(13, 148, 136, 0.08) 0%, transparent 70%);
+}
+
+.site-title {
+  font-size: 2.4rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  color: var(--pico-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.site-subtitle {
+  font-size: 1.15rem;
+  color: var(--pico-muted-color);
+  max-width: 650px;
+  margin: 0 auto 1.5rem;
+  line-height: 1.6;
+}
+
+/* Search & Filters */
+.controls-card {
+  padding: 1.25rem;
+  margin-bottom: 2rem;
+  border-radius: var(--card-radius);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.search-box-wrapper {
+  position: relative;
+  margin-bottom: 1.25rem;
+}
+
+.search-input {
+  font-size: 1.1rem;
+  padding: 0.85rem 1.25rem;
+  border-radius: 50px;
+  border: 2px solid var(--pico-primary-background);
+  transition: all 0.2s ease;
+}
+
+.search-input:focus {
+  border-color: var(--pico-primary);
+  box-shadow: 0 0 0 4px rgba(13, 148, 136, 0.15);
+}
+
+.categories-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.cat-btn {
+  padding: 0.4rem 0.9rem;
+  font-size: 0.9rem;
+  border-radius: 30px;
+  cursor: pointer;
+  border: 1px solid var(--pico-muted-border-color);
+  background: var(--pico-card-background-color);
+  color: var(--pico-color);
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.cat-btn.active {
+  background-color: var(--pico-primary);
+  color: #fff;
+  border-color: var(--pico-primary);
+  font-weight: 700;
+}
+
+/* Analysis Cards Grid */
+.analyses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.analysis-card {
+  border-radius: var(--card-radius);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid var(--pico-muted-border-color);
+  overflow: hidden;
+  position: relative;
+}
+
+.analysis-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.card-header-badge {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.badge-fasting {
+  background-color: rgba(245, 158, 11, 0.15);
+  color: #d97706;
+}
+
+.badge-free {
+  background-color: rgba(16, 185, 129, 0.15);
+  color: #059669;
+}
+
+.badge-category {
+  background-color: rgba(13, 148, 136, 0.1);
+  color: var(--pico-primary);
+}
+
+.card-title-ar {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+  color: var(--pico-h1-color);
+}
+
+.card-title-en {
+  font-size: 0.95rem;
+  color: var(--pico-muted-color);
+  margin-bottom: 0.85rem;
+}
+
+.range-box {
+  background-color: var(--pico-code-background-color);
+  border-right: 4px solid var(--pico-primary);
+  padding: 0.65rem 0.85rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  margin: 0.85rem 0;
+}
+
+.range-label {
+  font-weight: 700;
+  color: var(--pico-primary);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.details-btn {
+  margin-top: 1rem;
+  width: 100%;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+/* Modal and Detailed info */
+.detail-section {
+  margin: 1.25rem 0;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+}
+
+.detail-high {
+  background: rgba(239, 68, 68, 0.08);
+  border-right: 4px solid var(--badge-high);
+}
+
+.detail-low {
+  background: rgba(59, 130, 246, 0.08);
+  border-right: 4px solid var(--badge-low);
+}
+
+.detail-notes {
+  background: rgba(245, 158, 11, 0.08);
+  border-right: 4px solid var(--badge-fasting);
+}
+
+/* Footer */
+.site-footer {
+  margin-top: auto;
+  padding: 2.5rem 1rem 1.5rem;
+  border-top: 1px solid var(--pico-muted-border-color);
+  text-align: center;
+  background-color: var(--pico-card-background-color);
+}
+
+.quran-quote {
+  font-size: 1.1rem;
+  color: var(--pico-primary);
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.footer-credits {
+  font-size: 0.85rem;
+  color: var(--pico-muted-color);
+}
+
+/* Quick Stats Bar */
+.stats-bar {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 1rem 0 2rem;
+  flex-wrap: wrap;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-num {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--pico-primary);
+}
+
+.stat-title {
+  font-size: 0.85rem;
+  color: var(--pico-muted-color);
+}
