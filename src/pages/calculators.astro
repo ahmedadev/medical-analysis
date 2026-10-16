@@ -1,0 +1,18 @@
+---
+import GuideLayout from '../layouts/GuideLayout.astro';
+import CalculatorsContent from '../content/guides/calculators.md';
+import LabCalculators from '../components/LabCalculators';
+
+const title = "حاسبات المعادلات المعملية الطبية التفاعلية | أداة إخصائي التحاليل";
+const description = "حاسبات المعادلات المخبرية الفورية: كوليسترول LDL بمعادلة فريدوالد، متوسط السكر اليومي المقابل للتراكمي eAG، معدل ترشيح الكلى eGFR، والكالسيوم المصحح.";
+---
+
+<GuideLayout title={title} description={description} badge="حاسبات المعادلات المخبرية الفورية 🧮">
+  <div style="margin-bottom: 2.5rem;">
+    <LabCalculators client:load />
+  </div>
+
+  <hr style="margin: 3rem 0; border-color: var(--pico-muted-border-color);" />
+
+  <CalculatorsContent />
+</GuideLayout>

@@ -27,10 +27,40 @@ function isActive(path: string): boolean {
 
   <!-- Main Navigation -->
   <div class="sidebar-section">
-    <div class="sidebar-section-title">التنقل الرئيسي</div>
+    <div class="sidebar-section-title">الموسوعة والتحاليل</div>
     <a href={`${base}/`} class={`sidebar-link ${isActive('/') ? 'active' : ''}`}>
       <span class="link-icon">📊</span>
       <span>موسوعة التحاليل</span>
+    </a>
+    <a href={`${base}/critical-values`} class={`sidebar-link ${isActive('/critical-values') ? 'active' : ''}`}>
+      <span class="link-icon">🚨</span>
+      <span>النتائج الحرجة (Panic)</span>
+    </a>
+    <a href={`${base}/calculators`} class={`sidebar-link ${isActive('/calculators') ? 'active' : ''}`}>
+      <span class="link-icon">🧮</span>
+      <span>حاسبات المعادلات</span>
+    </a>
+  </div>
+
+  <!-- Phlebotomy & Equipment -->
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">السحب والأجهزة</div>
+    <a href={`${base}/order-of-draw`} class={`sidebar-link ${isActive('/order-of-draw') ? 'active' : ''}`}>
+      <span class="link-icon">🧪</span>
+      <span>سحب العينات والأنابيب</span>
+    </a>
+    <a href={`${base}/equipment`} class={`sidebar-link ${isActive('/equipment') ? 'active' : ''}`}>
+      <span class="link-icon">🔬</span>
+      <span>الأجهزة وضبط الجودة QC</span>
+    </a>
+  </div>
+
+  <!-- Licensing & Setup -->
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">التأسيس والتراخيص</div>
+    <a href={`${base}/checklist`} class={`sidebar-link ${isActive('/checklist') ? 'active' : ''}`}>
+      <span class="link-icon">📋</span>
+      <span>فحص المعاينة الحكومية</span>
     </a>
     <a href={`${base}/lab-setup`} class={`sidebar-link ${isActive('/lab-setup') ? 'active' : ''}`}>
       <span class="link-icon">🏥</span>

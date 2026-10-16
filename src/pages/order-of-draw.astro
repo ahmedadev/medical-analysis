@@ -1,0 +1,18 @@
+---
+import GuideLayout from '../layouts/GuideLayout.astro';
+import OrderOfDrawContent from '../content/guides/order-of-draw.md';
+import TubesGuide from '../components/TubesGuide';
+
+const title = "دليل سحب العينات وترتيب ألوان الأنابيب المخبرية (Order of Draw) | الدليل الشامل";
+const description = "المرجع التفاعلي الشامل لترتيب سحب أنابيب الدم (CLSI Order of Draw)، المواد المانعة للتجلط، عدد مرات التقليب، وأسباب رفض العينات في المعامل الطبية.";
+---
+
+<GuideLayout title={title} description={description} badge="دليل سحب العينات وألوان الأنابيب 🧪">
+  <div style="margin-bottom: 2.5rem;">
+    <TubesGuide client:load />
+  </div>
+
+  <hr style="margin: 3rem 0; border-color: var(--pico-muted-border-color);" />
+
+  <OrderOfDrawContent />
+</GuideLayout>

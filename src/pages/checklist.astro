@@ -1,0 +1,18 @@
+---
+import GuideLayout from '../layouts/GuideLayout.astro';
+import InspectionChecklist from '../components/InspectionChecklist';
+
+const title = "قائمة موانع الرفض القاتلة في تفتيش وزارة الصحة | فحص الجاهزية التفاعلي";
+const description = "قائمة تفاعلية شاملة لموانع الرفض المعمارية والتجهيزية والمهنية في معاينات تراخيص معامل التحاليل الطبية بمصر لحساب نسبة جاهزية معملك قبل حضور اللجنة.";
+---
+
+<GuideLayout title={title} description={description} badge="أداة التفتيش الذاتي ومعاينات وزارة الصحة 📋">
+  <div style="margin-bottom: 2rem;">
+    <h1>قائمة موانع الرفض القاتلة في معاينات وزارة الصحة</h1>
+    <p style="font-size: 1.1rem; color: var(--pico-muted-color); line-height: 1.7;">
+      هذه الأداة التفاعلية مخصصة لأصحاب المعامل والمديرين الفنيين لمراجعة كافة اشتراطات لجنة المعاينة المركزية بوزارة الصحة بنداً بنداً، وتلافي مسببات الإلغاء الفوري. حدّد الشروط المستوفاة لتقييم نسبة الجاهزية.
+    </p>
+  </div>
+
+  <InspectionChecklist client:load />
+</GuideLayout>
