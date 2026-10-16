@@ -111,18 +111,44 @@ const description = "دليل وموسوعة التحاليل الطبية ال�
         <!-- Preact Interactive Island -->
         <MedicalExplorer client:load analyses={medicalAnalyses} />
 
-        <!-- Medical Disclaimer Section -->
-        <section id="about" style="margin-top: 4rem; padding: 1.75rem; border-radius: var(--card-radius); background: var(--pico-card-background-color); border: 1px solid var(--pico-muted-border-color);">
-          <h3 style="color: var(--pico-primary); display: flex; align-items: center; gap: 0.5rem;">
-            <span>⚠️</span> تنبيه وإخلاء مسؤولية طبية
-          </h3>
-          <p style="line-height: 1.7; margin-bottom: 0.75rem;">
-            المعلومات والمعدلات المذكورة في هذا المرجع تم إعدادها لأغراض التثقيف الصحي والتوعية فقط. تختلف النطاقات الطبيعية بدقة من مختبر لآخر حسب الأجهزة والمحاليل المستخدمة (Reagents). 
-            <strong>لا تغني هذه المعلومات بأي حال من الأحوال عن استشارة الطبيب المعالج أو أخصائي التحاليل الطبية لتشخيص الحالة ووصف العلاج المناسب.</strong>
-          </p>
-          <small style="color: var(--pico-muted-color);">
-            تم بناء هذا المشروع بجهود تطوعية ليكون دليلاً عربياً سريعاً ومجانياً كصدقة جارية.
-          </small>
+        <!-- About & Developer Section -->
+        <section id="about" style="margin-top: 4rem; padding: 2rem; border-radius: var(--card-radius); background: var(--pico-card-background-color); border: 1px solid var(--pico-muted-border-color); box-shadow: 0 4px 16px rgba(0,0,0,0.03);">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; align-items: center;">
+            <div>
+              <span class="badge" style="background: rgba(13, 148, 136, 0.12); color: var(--pico-primary); font-size: 0.85rem; margin-bottom: 0.75rem;">
+                👨‍💻 إشراف وتطوير المشروع
+              </span>
+              <h2 style="font-size: 1.6rem; color: var(--pico-primary); margin: 0 0 0.5rem 0;">
+                أحمد علاء (Ahmed Alaa)
+              </h2>
+              <p style="font-size: 0.98rem; color: var(--pico-color); line-height: 1.7; margin-bottom: 1rem;">
+                صُممت وطُوّرت هذه الموسوعة المعملية بجهود تطوعية خالصة لتوفير مرجع تقني وطبي دقيق وشامل ومجاني تماماً باللغة العربية، يخدم طلبة العلوم الطبية، وأخصائيي التحاليل، والمرضى.
+              </p>
+
+              <!-- Contact & Links -->
+              <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 0.5rem;">
+                <a href="https://github.com/ahmedadev" target="_blank" rel="noopener" role="button" class="outline" style="font-size: 0.85rem; padding: 0.4rem 0.9rem; font-weight: 700;">
+                  🐙 GitHub: ahmedadev
+                </a>
+                <a href="mailto:ahmedaboalaa012@gmail.com" role="button" class="outline secondary" style="font-size: 0.85rem; padding: 0.4rem 0.9rem; font-weight: 700;">
+                  ✉️ ahmedaboalaa012@gmail.com
+                </a>
+              </div>
+            </div>
+
+            <!-- Sadaqah & Purpose Card -->
+            <div style="background: linear-gradient(135deg, rgba(13, 148, 136, 0.08), rgba(16, 185, 129, 0.05)); border: 1px solid rgba(13, 148, 136, 0.25); border-radius: 12px; padding: 1.25rem;">
+              <strong style="color: var(--pico-primary); font-size: 1.05rem; display: block; margin-bottom: 0.5rem;">
+                🌿 نية المشروع والصدقة الجارية
+              </strong>
+              <p style="font-size: 0.92rem; line-height: 1.7; margin-bottom: 0.75rem; color: var(--pico-color);">
+                هذا العمل وقف علمي لوجه الله تعالى وصدقة جارية بنية الأجر والثواب للوالدين ولموتى المسلمين جميعاً. نسألكم صالح الدعاء بالرحمة والمغفرة.
+              </p>
+              <div style="font-size: 0.85rem; color: var(--pico-muted-color); border-top: 1px solid rgba(13, 148, 136, 0.2); padding-top: 0.5rem;">
+                <strong>⚠️ تنبيه طبي:</strong> المعلومات الواردة استرشادية وتوعوية ولا تغني عن استشارة الطبيب المعالج والتحقق المعملي المباشر.
+              </div>
+            </div>
+          </div>
         </section>
       </main>
 
