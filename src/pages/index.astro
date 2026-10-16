@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import { medicalAnalyses } from '../data/analyses';
 import MedicalExplorer from '../components/MedicalExplorer';
+import Sidebar from '../components/Sidebar.astro';
 
 const title = "مرجع التحاليل الطبية الشامل | صدقة جارية";
 const description = "دليل وموسوعة التحاليل الطبية المخبرية باللغة العربية: النطاقات الطبيعية، شروط الصيام، وأسباب ارتفاع وانخفاض النتائج.";
@@ -40,153 +41,106 @@ const description = "دليل وموسوعة التحاليل الطبية ال�
     <span>🌿 صدقة جارية - نسألكم الدعاء لوالدينا ولموتى المسلمين بالرحمة والمغفرة</span>
   </div>
 
-  <!-- Main Navigation / Header Bar -->
-  <header class="container">
-    <nav>
-      <ul>
-        <li>
-          <strong style="color: var(--pico-primary); font-size: 1.3rem; display: flex; align-items: center; gap: 0.5rem;">
-            <span>🔬</span> مُعجم التحاليل
-          </strong>
-        </li>
-      </ul>
-      <ul>
-        <li>
-          <a href={`${import.meta.env.BASE_URL}/lab-setup`} role="button" class="outline" style="padding: 0.35rem 0.85rem; font-size: 0.85rem; border-color: var(--pico-primary); color: var(--pico-primary); font-weight: 700;">
-            🏥 تأسيس وترخيص المعامل
-          </a>
-        </li>
-        <li>
-          <a href={`${import.meta.env.BASE_URL}/syndicate`} role="button" class="outline secondary" style="padding: 0.35rem 0.85rem; font-size: 0.85rem; font-weight: 700;">
-            📜 دليل النقابة والتراخيص
-          </a>
-        </li>
-        <li>
-          <button id="themeToggle" class="outline secondary" style="padding: 0.35rem 0.8rem; font-size: 0.85rem;" aria-label="تبديل الوضع الليلي">
-            <span id="themeIcon">🌙</span> <span id="themeText">الوضع الليلي</span>
-          </button>
-        </li>
-      </ul>
-    </nav>
-  </header>
+  <!-- Page Body with Sidebar -->
+  <div class="page-body">
+    <Sidebar currentPath="/" />
 
-  <!-- Hero Section -->
-  <main class="container">
-    <section class="site-header">
-      <h1 class="site-title">
-        <span>موسوعة التحاليل الطبية</span>
-      </h1>
-      <p class="site-subtitle">
-        دليلك الموثوق لفهم وتفسير الفحوصات المخبرية، شروط إجرائها والصيام، ونطاقاتها الطبيعية باللغة العربية البسيطة.
-      </p>
+    <div class="page-content">
+      <!-- Hero Section -->
+      <main class="container">
+        <section class="site-header">
+          <h1 class="site-title">
+            <span>موسوعة التحاليل الطبية</span>
+          </h1>
+          <p class="site-subtitle">
+            دليلك الموثوق لفهم وتفسير الفحوصات المخبرية، شروط إجرائها والصيام، ونطاقاتها الطبيعية باللغة العربية البسيطة.
+          </p>
 
-      <!-- Stats Bar -->
-      <div class="stats-bar">
-        <div class="stat-item">
-          <span class="stat-num">{medicalAnalyses.length}</span>
-          <span class="stat-title">تحاليل مفصلة</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-num">8</span>
-          <span class="stat-title">أقسام مخبرية</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-num">10</span>
-          <span class="stat-title">أبواب تأسيس المعمل</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-num">100%</span>
-          <span class="stat-title">مجاني ومتاح للجميع</span>
-        </div>
-      </div>
-    </section>
+          <!-- Stats Bar -->
+          <div class="stats-bar">
+            <div class="stat-item">
+              <span class="stat-num">{medicalAnalyses.length}</span>
+              <span class="stat-title">تحاليل مفصلة</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-num">8</span>
+              <span class="stat-title">أقسام مخبرية</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-num">10</span>
+              <span class="stat-title">أبواب تأسيس المعمل</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-num">100%</span>
+              <span class="stat-title">مجاني ومتاح للجميع</span>
+            </div>
+          </div>
+        </section>
 
-    <!-- Quick Master Guides Grid -->
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
-      <div style="background: linear-gradient(135deg, rgba(13, 148, 136, 0.1), rgba(16, 185, 129, 0.08)); border: 1px solid rgba(13, 148, 136, 0.3); border-radius: var(--card-radius); padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between;">
-        <div>
-          <strong style="color: var(--pico-primary); font-size: 1.15rem; display: block; margin-bottom: 0.35rem;">
-            🏥 دليل تأسيس وترخيص معمل تحاليل
-          </strong>
-          <span style="font-size: 0.95rem; color: var(--pico-muted-color); line-height: 1.6; display: block; margin-bottom: 1rem;">
-            المواصفات المعمارية، الأجهزة التشخيصية، البنشات، موانع الرفض القاتلة لوزارة الصحة، وقواعد المعاينة.
-          </span>
-        </div>
-        <a href={`${import.meta.env.BASE_URL}/lab-setup`} role="button" style="font-size: 0.9rem; padding: 0.5rem 1rem; font-weight: 700; width: 100%; text-align: center;">
-          فتح دليل تأسيس المعمل ←
-        </a>
-      </div>
+        <!-- Quick Master Guides Grid -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+          <div style="background: linear-gradient(135deg, rgba(13, 148, 136, 0.1), rgba(16, 185, 129, 0.08)); border: 1px solid rgba(13, 148, 136, 0.3); border-radius: var(--card-radius); padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <strong style="color: var(--pico-primary); font-size: 1.15rem; display: block; margin-bottom: 0.35rem;">
+                🏥 دليل تأسيس وترخيص معمل تحاليل
+              </strong>
+              <span style="font-size: 0.95rem; color: var(--pico-muted-color); line-height: 1.6; display: block; margin-bottom: 1rem;">
+                المواصفات المعمارية، الأجهزة التشخيصية، البنشات، موانع الرفض القاتلة لوزارة الصحة، وقواعد المعاينة.
+              </span>
+            </div>
+            <a href={`${import.meta.env.BASE_URL}/lab-setup`} role="button" style="font-size: 0.9rem; padding: 0.5rem 1rem; font-weight: 700; width: 100%; text-align: center;">
+              فتح دليل تأسيس المعمل ←
+            </a>
+          </div>
 
-      <div style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(99, 102, 241, 0.08)); border: 1px solid rgba(37, 99, 235, 0.3); border-radius: var(--card-radius); padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between;">
-        <div>
-          <strong style="color: #2563eb; font-size: 1.15rem; display: block; margin-bottom: 0.35rem;">
-            📜 دليل نقابة العلميين والتراخيص
-          </strong>
-          <span style="font-size: 0.95rem; color: var(--pico-muted-color); line-height: 1.6; display: block; margin-bottom: 1rem;">
-            أوراق القيد كأخصائي تحاليل، استخراج ترخيص مزاولة المهنة (نموذج 13 صحة)، وإجراءات تعديل البطاقة.
-          </span>
+          <div style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(99, 102, 241, 0.08)); border: 1px solid rgba(37, 99, 235, 0.3); border-radius: var(--card-radius); padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <strong style="color: #2563eb; font-size: 1.15rem; display: block; margin-bottom: 0.35rem;">
+                📜 دليل نقابة العلميين والتراخيص
+              </strong>
+              <span style="font-size: 0.95rem; color: var(--pico-muted-color); line-height: 1.6; display: block; margin-bottom: 1rem;">
+                أوراق القيد كأخصائي تحاليل، استخراج ترخيص مزاولة المهنة (نموذج 13 صحة)، وإجراءات تعديل البطاقة.
+              </span>
+            </div>
+            <a href={`${import.meta.env.BASE_URL}/syndicate`} role="button" class="secondary" style="font-size: 0.9rem; padding: 0.5rem 1rem; font-weight: 700; width: 100%; text-align: center;">
+              فتح دليل النقابة وتعديل المهنة ←
+            </a>
+          </div>
         </div>
-        <a href={`${import.meta.env.BASE_URL}/syndicate`} role="button" class="secondary" style="font-size: 0.9rem; padding: 0.5rem 1rem; font-weight: 700; width: 100%; text-align: center;">
-          فتح دليل النقابة وتعديل المهنة ←
-        </a>
-      </div>
+
+        <!-- Preact Interactive Island -->
+        <MedicalExplorer client:load analyses={medicalAnalyses} />
+
+        <!-- Medical Disclaimer Section -->
+        <section id="about" style="margin-top: 4rem; padding: 1.75rem; border-radius: var(--card-radius); background: var(--pico-card-background-color); border: 1px solid var(--pico-muted-border-color);">
+          <h3 style="color: var(--pico-primary); display: flex; align-items: center; gap: 0.5rem;">
+            <span>⚠️</span> تنبيه وإخلاء مسؤولية طبية
+          </h3>
+          <p style="line-height: 1.7; margin-bottom: 0.75rem;">
+            المعلومات والمعدلات المذكورة في هذا المرجع تم إعدادها لأغراض التثقيف الصحي والتوعية فقط. تختلف النطاقات الطبيعية بدقة من مختبر لآخر حسب الأجهزة والمحاليل المستخدمة (Reagents). 
+            <strong>لا تغني هذه المعلومات بأي حال من الأحوال عن استشارة الطبيب المعالج أو أخصائي التحاليل الطبية لتشخيص الحالة ووصف العلاج المناسب.</strong>
+          </p>
+          <small style="color: var(--pico-muted-color);">
+            تم بناء هذا المشروع بجهود تطوعية ليكون دليلاً عربياً سريعاً ومجانياً كصدقة جارية.
+          </small>
+        </section>
+      </main>
+
+      <!-- Site Footer -->
+      <footer class="site-footer">
+        <div class="container">
+          <div class="quran-quote">
+            « وَمَنْ أَحْيَاهَا فَكَأَنَّمَا أَحْيَا النَّاسَ جَمِيعًا »
+          </div>
+          <p style="margin-bottom: 0.5rem; font-weight: 600;">
+            مرجع التحاليل الطبية الشامل - صُمم لخدمة المرضى والباحثين وطلبة الطب والعلوم الطبية
+          </p>
+          <div class="footer-credits">
+            مبني باستخدام Astro و Preact و Pico CSS • صدقة جارية بنية الأجر والثواب للجميع
+          </div>
+        </div>
+      </footer>
     </div>
-
-    <!-- Preact Interactive Island -->
-    <MedicalExplorer client:load analyses={medicalAnalyses} />
-
-    <!-- Medical Disclaimer Section -->
-    <section id="about" style="margin-top: 4rem; padding: 1.75rem; border-radius: var(--card-radius); background: var(--pico-card-background-color); border: 1px solid var(--pico-muted-border-color);">
-      <h3 style="color: var(--pico-primary); display: flex; align-items: center; gap: 0.5rem;">
-        <span>⚠️</span> تنبيه وإخلاء مسؤولية طبية
-      </h3>
-      <p style="line-height: 1.7; margin-bottom: 0.75rem;">
-        المعلومات والمعدلات المذكورة في هذا المرجع تم إعدادها لأغراض التثقيف الصحي والتوعية فقط. تختلف النطاقات الطبيعية بدقة من مختبر لآخر حسب الأجهزة والمحاليل المستخدمة (Reagents). 
-        <strong>لا تغني هذه المعلومات بأي حال من الأحوال عن استشارة الطبيب المعالج أو أخصائي التحاليل الطبية لتشخيص الحالة ووصف العلاج المناسب.</strong>
-      </p>
-      <small style="color: var(--pico-muted-color);">
-        تم بناء هذا المشروع بجهود تطوعية ليكون دليلاً عربياً سريعاً ومجانياً كصدقة جارية.
-      </small>
-    </section>
-  </main>
-
-  <!-- Site Footer -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="quran-quote">
-        « وَمَنْ أَحْيَاهَا فَكَأَنَّمَا أَحْيَا النَّاسَ جَمِيعًا »
-      </div>
-      <p style="margin-bottom: 0.5rem; font-weight: 600;">
-        مرجع التحاليل الطبية الشامل - صُمم لخدمة المرضى والباحثين وطلبة الطب والعلوم الطبية
-      </p>
-      <div class="footer-credits">
-        مبني باستخدام Astro و Preact و Pico CSS • صدقة جارية بنية الأجر والثواب للجميع
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    const toggle = document.getElementById('themeToggle');
-    const html = document.documentElement;
-    const icon = document.getElementById('themeIcon');
-    const text = document.getElementById('themeText');
-
-    function updateTheme(theme: string) {
-      html.setAttribute('data-theme', theme);
-      localStorage.setItem('theme', theme);
-      if (icon && text) {
-        icon.textContent = theme === 'dark' ? '☀️' : '🌙';
-        text.textContent = theme === 'dark' ? 'الوضع النهاري' : 'الوضع الليلي';
-      }
-    }
-
-    const current = localStorage.getItem('theme') || 'light';
-    updateTheme(current);
-
-    toggle?.addEventListener('click', () => {
-      const isDark = html.getAttribute('data-theme') === 'dark';
-      updateTheme(isDark ? 'light' : 'dark');
-    });
-  </script>
+  </div>
 </body>
 </html>

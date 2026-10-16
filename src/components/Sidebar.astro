@@ -1,0 +1,130 @@
+---
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = Astro.url.pathname } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+// Normalize path: strip base prefix if present, strip trailing slash
+let relPath = currentPath;
+if (base && relPath.startsWith(base)) {
+  relPath = relPath.slice(base.length);
+}
+const normalizedPath = relPath.replace(/\/$/, '') || '/';
+
+function isActive(path: string): boolean {
+  const normalized = path.replace(/\/$/, '') || '/';
+  return normalizedPath === normalized;
+}
+---
+
+<!-- Sidebar -->
+<aside class="sidebar" id="sidebar">
+  <a href={`${base}/`} class="sidebar-brand">
+    <span>🔬</span> مُعجم التحاليل
+  </a>
+
+  <!-- Main Navigation -->
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">التنقل الرئيسي</div>
+    <a href={`${base}/`} class={`sidebar-link ${isActive('/') ? 'active' : ''}`}>
+      <span class="link-icon">📊</span>
+      <span>موسوعة التحاليل</span>
+    </a>
+    <a href={`${base}/lab-setup`} class={`sidebar-link ${isActive('/lab-setup') ? 'active' : ''}`}>
+      <span class="link-icon">🏥</span>
+      <span>تأسيس وترخيص المعامل</span>
+    </a>
+    <a href={`${base}/syndicate`} class={`sidebar-link ${isActive('/syndicate') ? 'active' : ''}`}>
+      <span class="link-icon">📜</span>
+      <span>دليل النقابة والتراخيص</span>
+    </a>
+  </div>
+
+  <!-- Quick Info -->
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">روابط سريعة</div>
+    <a href={`${base}/#about`} class="sidebar-link">
+      <span class="link-icon">⚠️</span>
+      <span>إخلاء المسؤولية</span>
+    </a>
+    <a href="https://esspegypt.net/" target="_blank" rel="noopener" class="sidebar-link">
+      <span class="link-icon">🌐</span>
+      <span>موقع النقابة</span>
+    </a>
+  </div>
+
+  <!-- Theme Toggle in Footer -->
+  <div class="sidebar-footer">
+    <button id="sidebarThemeToggle" class="outline secondary sidebar-theme-btn" aria-label="تبديل الوضع">
+      <span id="sidebarThemeIcon">🌙</span>
+      <span id="sidebarThemeText">الوضع الليلي</span>
+    </button>
+  </div>
+</aside>
+
+<!-- Mobile overlay -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- Mobile toggle button -->
+<button class="sidebar-toggle" id="sidebarToggle" aria-label="فتح القائمة">
+  <span id="toggleIcon">☰</span>
+</button>
+
+<script>
+  // Sidebar mobile toggle
+  const sidebarToggle = document.getElementById('sidebarToggle');
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebarOverlay');
+  const toggleIcon = document.getElementById('toggleIcon');
+
+  function toggleSidebar() {
+    const isOpen = sidebar?.classList.toggle('open');
+    overlay?.classList.toggle('open');
+    if (toggleIcon) {
+      toggleIcon.textContent = isOpen ? '✕' : '☰';
+    }
+  }
+
+  function closeSidebar() {
+    sidebar?.classList.remove('open');
+    overlay?.classList.remove('open');
+    if (toggleIcon) {
+      toggleIcon.textContent = '☰';
+    }
+  }
+
+  sidebarToggle?.addEventListener('click', toggleSidebar);
+  overlay?.addEventListener('click', closeSidebar);
+
+  // Theme toggle (sidebar version)
+  const sidebarThemeBtn = document.getElementById('sidebarThemeToggle');
+  const html = document.documentElement;
+  const sIcon = document.getElementById('sidebarThemeIcon');
+  const sText = document.getElementById('sidebarThemeText');
+
+  function updateTheme(theme: string) {
+    html.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    if (sIcon && sText) {
+      sIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
+      sText.textContent = theme === 'dark' ? 'الوضع النهاري' : 'الوضع الليلي';
+    }
+    // Sync with header theme buttons if they exist
+    const headerIcon = document.getElementById('themeIcon');
+    const headerText = document.getElementById('themeText');
+    if (headerIcon && headerText) {
+      headerIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
+      headerText.textContent = theme === 'dark' ? 'الوضع النهاري' : 'الوضع الليلي';
+    }
+  }
+
+  const current = localStorage.getItem('theme') || 'light';
+  updateTheme(current);
+
+  sidebarThemeBtn?.addEventListener('click', () => {
+    const isDark = html.getAttribute('data-theme') === 'dark';
+    updateTheme(isDark ? 'light' : 'dark');
+  });
+</script>
